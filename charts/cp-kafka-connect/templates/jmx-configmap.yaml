@@ -14,6 +14,10 @@ data:
     lowercaseOutputName: true
     lowercaseOutputLabelNames: true
     ssl: false
+    {{- if .Values.prometheus.jmx.whitelistObjectNames }}
+    whitelistObjectNames:
+{{ toYaml .Values.prometheus.jmx.whitelistObjectNames | trim | indent 4 }}
+    {{- end }}
     rules:
 {{ tpl .Values.prometheus.jmx.rules . | indent 4 }}
 {{- end }}

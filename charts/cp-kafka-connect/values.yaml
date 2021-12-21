@@ -94,6 +94,10 @@ prometheus:
     ## See the `resources` documentation above for details.
     resources: {}
 
+    whitelistObjectNames:
+      - kafka.connect:type=connect-worker-metrics
+      - kafka.connect:type=connect-metrics,client-id=*
+      - kafka.connect:type=connector-task-metrics,connector=*,task=*
     rules: |
       - pattern: "kafka.connect<type=connect-worker-metrics>([^:]+):"
         name: "cp_kafka_connect_connect_worker_metrics_$1"
