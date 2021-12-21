@@ -14,10 +14,6 @@ data:
     lowercaseOutputName: true
     lowercaseOutputLabelNames: true
     ssl: false
-    whitelistObjectNames:
-    - kafka.connect:type=connect-worker-metrics
-    - kafka.connect:type=connect-metrics,client-id=*
-    - kafka.connect:type=connector-task-metrics,connector=*,task=*
     rules:
 {{ tpl .Values.prometheus.jmx.rules . | indent 4 }}
 {{- end }}
